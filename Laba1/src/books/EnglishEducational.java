@@ -11,10 +11,11 @@ public class EnglishEducational extends Book {
         this.level = level;
         this.author = author;
         this.university = university;
+        this.setType(BookType.ENGLISH_EDUCATIONAL);
     }
 
     @Override
-    public String getInfo() {
+    public String toString() {
         return "English Textbook - Name: " + getName() + ", Level: " + level + ", Author: " + author + ", University: " + university;
     }
 
