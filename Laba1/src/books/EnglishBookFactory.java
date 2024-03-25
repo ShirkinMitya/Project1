@@ -5,27 +5,35 @@ import java.util.Random;
 
 public class EnglishBookFactory implements AbstractBookFactory {
 
-    protected static List<String> names;
-    protected static List<String> author;
-    protected static List<String> levels;
-    protected static List<String> univercity;
+    public static List<String> namesForEducational;
+    public static List<String> authorForEducational;
+    public static List<String> levels;
+    public static List<String> univercities;
+    public static List<String> namesForFiction;
+    public static List<String> authorToFiction;
+    protected static List<String> year;
 
     @Override
-
     public EnglishEducational createEducationalBook() {
         Random random = new Random();
-        int indexName = random.nextInt(names.size());
-        int indexAuthor = random.nextInt(author.size());
+        int indexNameForEducational = random.nextInt(namesForEducational.size());
+        int indexAuthorForEducatoinal = random.nextInt(authorForEducational.size());
         int indexLevels = random.nextInt(levels.size());
-        int indexUnivercity = random.nextInt(univercity.size());
-        return new EnglishEducational(names.get(indexName), author.get(indexAuthor),
-                levels.get(indexLevels), univercity.get(indexUnivercity));
+        int indexUnivercity = random.nextInt(univercities.size());
+        return new EnglishEducational(namesForEducational.get(indexNameForEducational),
+                authorForEducational.get(indexAuthorForEducatoinal),
+                levels.get(indexLevels),
+                univercities.get(indexUnivercity));
     }
 
     @Override
     public EnglishFiction createFictionBook() {
         Random random = new Random();
-        int indexName = random.nextInt(names.size());
-        return new EnglishFiction(names.get(indexName));
+        int indexNameForFiction = random.nextInt(namesForFiction.size());
+        int indexAuthorForFuction = random.nextInt(authorToFiction.size());
+        int indexYear = random.nextInt(year.size());
+        return new EnglishFiction(namesForFiction.get(indexNameForFiction),
+                authorToFiction.get(indexAuthorForFuction),
+                year.get(indexYear));
     }
 }

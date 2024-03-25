@@ -5,23 +5,27 @@ import java.util.Random;
 
 public class RussianBookFactory implements AbstractBookFactory {
 
-    protected static List<String> names;
-    protected static List<String> subType;
+    public static List<String> namesForEducational;
+    public static List<String> subType;
+    public static List<String> namesForFiction;
+    public static List<String> author;
 
     @Override
     public RussianEducational createEducationalBook() {
         Random random = new Random();
-        int indexNames = random.nextInt(names.size());
+        int indexNamesForEducational = random.nextInt(namesForEducational.size());
         int indexSubType = random.nextInt(subType.size());
-        return new RussianEducational(names.get(indexNames), subType.get(indexSubType));
+        return new RussianEducational(namesForEducational.get(indexNamesForEducational),
+                subType.get(indexSubType));
     }
 
     @Override
     public RussianFiction createFictionBook() {
         Random random = new Random();
-        int indexNames = random.nextInt(names.size());
-        return new RussianFiction(names.get(indexNames));
-       
+        int indexNamesForFiction = random.nextInt(namesForFiction.size());
+        int indexAuthor = random.nextInt(author.size());
+        return new RussianFiction(namesForFiction.get(indexNamesForFiction), author.get(indexAuthor));
+
     }
 
 }

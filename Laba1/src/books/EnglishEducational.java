@@ -16,7 +16,7 @@ public class EnglishEducational extends Book {
 
     @Override
     public String toString() {
-        return "English Textbook - Name: " + getName() + ", Level: " + level + ", Author: " + author + ", University: " + university;
+        return getName() + " " + author + " " + university + " " + level;
     }
 
 }

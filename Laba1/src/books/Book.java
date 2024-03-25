@@ -12,7 +12,6 @@ public abstract class Book {
 
     public String getName() {
         return name;
-
     }
 
     public void setType(BookType type) {
@@ -22,6 +21,4 @@ public abstract class Book {
     public BookType getType() {
         return type;
     }
-    
-
 }

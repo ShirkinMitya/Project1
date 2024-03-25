@@ -1,8 +1,20 @@
 package customers;
 
+import books.Book;
+import java.util.List;
+
 public class LibraryClient {
 
     private String fullName;
+    private List<Book> books;
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 
     public LibraryClient(String fullName) {
         this.fullName = fullName;

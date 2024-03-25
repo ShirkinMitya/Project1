@@ -2,13 +2,16 @@ package books;
 
 public class RussianFiction extends Book {
 
-    public RussianFiction(String name) {
+    private String author;
+
+    public RussianFiction(String name, String author) {
         super(name);
+        this.author = author;
         this.setType(BookType.RUSSIAN_FICTION);
     }
 
     @Override
     public String toString() {
-        return "Russian Fiction - Name: " + getName() + getType();
+        return getName() + " " + author;
     }
 }

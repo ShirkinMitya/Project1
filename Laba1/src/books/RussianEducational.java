@@ -13,6 +13,6 @@ public class RussianEducational extends Book {
 
     @Override
     public String toString() {
-        return "Russian Textbook - Name: " + getName() + ", Type: " + getType();
+        return getName() + " " + subType;
     }
 }

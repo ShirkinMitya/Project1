@@ -1,18 +1,14 @@
 package customers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Builder {
 
-    abstract Builder createFullName();
-    
-    public static ArrayList<String> ManNames = new ArrayList<>();
-    public static ArrayList<String> WomanNames = new ArrayList<>();
-    public static ArrayList<String> ManSurnames = new ArrayList<>();
-    public static ArrayList<String> WomanSurnames = new ArrayList<>();
-    public static ArrayList<String> TeachersManSurnames = new ArrayList<>();
-    public static ArrayList<String> TeachersWomanSurnames = new ArrayList<>();
-    public static ArrayList<String> TeachersManMiddleNames = new ArrayList<>();
-    public static ArrayList<String> TeachersWomanMiddleNames = new ArrayList<>();
+    abstract Builder createName(List<String> names);
 
+    abstract Builder createSurName(List<String> surnames);
+
+    abstract Builder createSecondName(List<String> secondnames);
+
+    abstract LibraryClient createLibraryClient();
 }
