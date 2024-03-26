@@ -1,12 +1,13 @@
 package customers;
 
 import books.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryClient {
 
     private String fullName;
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
     public void setBooks(List<Book> books) {
         this.books = books;

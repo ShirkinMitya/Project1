@@ -11,15 +11,16 @@ public class TeacherBuilder implements Builder {
     public Builder createName(List<String> names) {
         Random random = new Random();
         int indexName = random.nextInt(names.size());
-        fullName += names.get(indexName);
+        fullName += names.get(indexName) + " ";
         return this;
     }
 
     @Override
     public Builder createSurName(List<String> surnames) {
+        fullName = null;
         Random random = new Random();
         int indexSurnames = random.nextInt(surnames.size());
-        fullName += surnames.get(indexSurnames);
+        fullName = surnames.get(indexSurnames) + " ";
         return this;
     }
 
@@ -33,9 +34,7 @@ public class TeacherBuilder implements Builder {
 
     @Override
     public LibraryClient createLibraryClient() {
-
         return new LibraryClient(fullName);
-
     }
 
 }

@@ -1,17 +1,18 @@
 package books;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class EnglishBookFactory implements AbstractBookFactory {
 
-    public static List<String> namesForEducational;
-    public static List<String> authorForEducational;
-    public static List<String> levels;
-    public static List<String> univercities;
-    public static List<String> namesForFiction;
-    public static List<String> authorToFiction;
-    protected static List<String> year;
+    public static List<String> namesForEducational = new ArrayList<>();
+    public static List<String> authorForEducational = new ArrayList<>();
+    public static List<String> levels = new ArrayList<>();
+    public static List<String> univercities = new ArrayList<>();
+    public static List<String> namesForFiction = new ArrayList<>();
+    public static List<String> authorToFiction = new ArrayList<>();
+    public static List<String> year = new ArrayList<>();
 
     @Override
     public EnglishEducational createEducationalBook() {

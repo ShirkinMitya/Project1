@@ -1,11 +1,17 @@
 package books;
 
 public enum BookType {
-    RUSSIAN_FICTION,
-    RUSSIAN_EDUCATIONAL,
-    ENGLISH_FICTION,
-    ENGLISH_EDUCATIONAL;
+    RUSSIAN_FICTION("РХ"),
+    RUSSIAN_EDUCATIONAL("РО"),
+    ENGLISH_FICTION("АХ"),
+    ENGLISH_EDUCATIONAL("АО");
+    private final String name;
 
-    private BookType() {
+    public String getName() {
+        return name;
+    }
+
+    private BookType(String name) {
+        this.name = name;
     }
 }

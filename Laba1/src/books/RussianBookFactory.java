@@ -1,14 +1,15 @@
 package books;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RussianBookFactory implements AbstractBookFactory {
 
-    public static List<String> namesForEducational;
-    public static List<String> subType;
-    public static List<String> namesForFiction;
-    public static List<String> author;
+    public static List<String> namesForEducational= new ArrayList<>();
+    public static List<String> subType= new ArrayList<>();
+    public static List<String> namesForFiction = new ArrayList<>();
+    public static List<String> author= new ArrayList<>();
 
     @Override
     public RussianEducational createEducationalBook() {

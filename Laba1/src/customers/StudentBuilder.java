@@ -17,9 +17,10 @@ public class StudentBuilder implements Builder {
 
     @Override
     public Builder createSurName(List<String> surnames) {
+        fullName = null;
         Random random = new Random();
         int indexSurnames = random.nextInt(surnames.size());
-        fullName += surnames.get(indexSurnames);
+        fullName = surnames.get(indexSurnames) + " ";
         return this;
     }
 
@@ -30,9 +31,7 @@ public class StudentBuilder implements Builder {
 
     @Override
     public LibraryClient createLibraryClient() {
-
         return new LibraryClient(fullName);
-
     }
 
 }
