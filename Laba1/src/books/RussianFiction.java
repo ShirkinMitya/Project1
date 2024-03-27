@@ -12,6 +12,6 @@ public class RussianFiction extends Book {
 
     @Override
     public String toString() {
-        return getName() + " " + author;
+        return "НАЗВАНИЕ: " + getName() + " АВТОР: " + author;
     }
 }

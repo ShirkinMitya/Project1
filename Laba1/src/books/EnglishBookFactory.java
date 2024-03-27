@@ -23,8 +23,8 @@ public class EnglishBookFactory implements AbstractBookFactory {
         int indexUnivercity = random.nextInt(univercities.size());
         return new EnglishEducational(namesForEducational.get(indexNameForEducational),
                 authorForEducational.get(indexAuthorForEducatoinal),
-                levels.get(indexLevels),
-                univercities.get(indexUnivercity));
+                univercities.get(indexUnivercity),
+                levels.get(indexLevels));
     }
 
     @Override

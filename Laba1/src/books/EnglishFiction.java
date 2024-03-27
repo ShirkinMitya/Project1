@@ -2,8 +2,8 @@ package books;
 
 public class EnglishFiction extends Book {
 
-    private String author;
-    private String year;
+    private final String author;
+    private final String year;
 
     public EnglishFiction(String name, String author, String year) {
         super(name);
@@ -14,6 +14,6 @@ public class EnglishFiction extends Book {
 
     @Override
     public String toString() {
-        return getName() + " " + author + " " + year;
+        return "НАЗВАНИЕ: " + getName() + " АВТОР: " + author + " ГОД: " + year;
     }
 }

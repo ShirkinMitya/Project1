@@ -26,13 +26,13 @@ public class CSVreader {
                     EnglishBookFactory.namesForEducational.add(str[0]);
                 }
                 if (str.length > 1 && !str[1].isBlank()) {
-                    EnglishBookFactory.levels.add(str[1]);
+                    EnglishBookFactory.univercities.add(str[1]);
                 }
                 if (str.length > 2 && !str[2].isBlank()) {
                     EnglishBookFactory.authorForEducational.add(str[2]);
                 }
                 if (str.length > 3 && !str[3].isBlank()) {
-                    EnglishBookFactory.univercities.add(str[3]);
+                    EnglishBookFactory.levels.add(str[3]);
                 }
             }
         } catch (IOException e) {

@@ -2,7 +2,7 @@ package books;
 
 public abstract class Book {
 
-    private String name;
+    private final String name;
     private BookType type;
 
     public Book(String name) {

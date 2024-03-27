@@ -17,9 +17,9 @@ import javax.swing.tree.MutableTreeNode;
 
 public class Service {
 
-    public static ArrayList<Book> books = new ArrayList<>();
-    public static ArrayList<LibraryClient> students = new ArrayList<>();
-    public static ArrayList<LibraryClient> teachers = new ArrayList<>();
+    public static List<Book> books = new ArrayList<>();
+    public static List<LibraryClient> students = new ArrayList<>();
+    public static List<LibraryClient> teachers = new ArrayList<>();
 
     public void createData() {
         Random random = new Random();
