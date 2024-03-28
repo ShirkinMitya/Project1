@@ -86,7 +86,7 @@ public class Service {
     }
 
     public DefaultMutableTreeNode addInfotoGUI() {
-        DefaultMutableTreeNode mainNode = new DefaultMutableTreeNode("Клиенты библиотеки");
+        DefaultMutableTreeNode mainNode = new DefaultMutableTreeNode("Клиенты");
         mainNode.add(getSudentNodes());
         mainNode.add(getTeachersNodes());
         return mainNode;
