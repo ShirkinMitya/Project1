@@ -68,10 +68,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonStartActionPerformed
-        CSVreader csvreader = new CSVreader();
-        csvreader.reader();
         Service service = new Service();
-        service.delete();
         service.createData();
         jTree1.setModel(new DefaultTreeModel(service.addInfotoGUI()));
     }//GEN-LAST:event_JButtonStartActionPerformed

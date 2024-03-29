@@ -1,119 +1,149 @@
 package laba1;
 
-import books.EnglishBookFactory;
-import books.RussianBookFactory;
-import customers.Director;
+import books.EnglishEducationalBookFactory;
+import books.EnglishFictionBookFactory;
+import books.RussianEducationalBookFactory;
+import books.RussianFictionBookFactory;
+import customers.Builder;
+import customers.LibraryClientType;
+import customers.StudentBuilder;
+import customers.TeacherBuilder;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class CSVreader {
 
-    String csvFile1 = "/Users/shirkinmity/Desktop/АнглийскаяНаучная.csv";
-    String csvFile2 = "/Users/shirkinmity/Desktop/АнглийскаяХудожественная.csv";
-    String csvFile3 = "/Users/shirkinmity/Desktop/РусскаяНаучная.csv";
-    String csvFile4 = "/Users/shirkinmity/Desktop/РусскаяХодожественная.csv";
-    String csvFile5 = "/Users/shirkinmity/Desktop/Фио.csv";
     String line = "";
 
-    public void reader() {
+    public void readCsvEnglishEducational(String FileName, EnglishEducationalBookFactory englishEducationalBookFactory) {
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile1))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(";");
                 if (str.length > 0 && !str[0].isBlank()) {
-                    EnglishBookFactory.namesForEducational.add(str[0]);
+                    englishEducationalBookFactory.getNamesForEducational().add(str[0]);
                 }
                 if (str.length > 1 && !str[1].isBlank()) {
-                    EnglishBookFactory.univercities.add(str[1]);
+                    englishEducationalBookFactory.getUnivercities().add(str[1]);
                 }
                 if (str.length > 2 && !str[2].isBlank()) {
-                    EnglishBookFactory.authorForEducational.add(str[2]);
+                    englishEducationalBookFactory.getAuthorForEducational().add(str[2]);
                 }
                 if (str.length > 3 && !str[3].isBlank()) {
-                    EnglishBookFactory.levels.add(str[3]);
+                    englishEducationalBookFactory.getLevels().add(str[3]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile2))) {
+    public void readCsvEnglishFuntion(String FileName, EnglishFictionBookFactory englishFictionBookFactory) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(";");
                 if (str.length > 0 && !str[0].isBlank()) {
-                    EnglishBookFactory.namesForFiction.add(str[0]);
+                    englishFictionBookFactory.getNamesForFiction().add(str[0]);
                 }
                 if (str.length > 1 && !str[1].isBlank()) {
-                    EnglishBookFactory.authorToFiction.add(str[1]);
+                    englishFictionBookFactory.getAuthorToFiction().add(str[1]);
                 }
                 if (str.length > 2 && !str[2].isBlank()) {
-                    EnglishBookFactory.year.add(str[2]);
+                    englishFictionBookFactory.getYear().add(str[2]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile3))) {
+    public void readCsvRussianEducational(String FileName, RussianEducationalBookFactory russianEducationalBookFactory) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(";");
                 if (str.length > 0 && !str[0].isBlank()) {
-                    RussianBookFactory.namesForEducational.add(str[0]);
+                    russianEducationalBookFactory.getNamesForEducational().add(str[0]);
                 }
                 if (str.length > 1 && !str[1].isBlank()) {
-                    RussianBookFactory.subType.add(str[1]);
+                    russianEducationalBookFactory.getSubType().add(str[1]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile4))) {
+    public void readCsvRussianFiction(String FileName, RussianFictionBookFactory russianFictionBookFactory) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(";");
                 if (str.length > 0 && !str[0].isBlank()) {
-                    RussianBookFactory.namesForFiction.add(str[0]);
+                    russianFictionBookFactory.getNamesForFiction().add(str[0]);
                 }
                 if (str.length > 1 && !str[1].isBlank()) {
-                    RussianBookFactory.author.add(str[1]);
+                    russianFictionBookFactory.getAuthor().add(str[1]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile5))) {
+    public void readCsvGeneralPeople(String FileName, Builder builder) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(";");
-                if (str.length > 0 && !str[0].isBlank()) {
-                    Director.TeachersManSurnames.add(str[0]);
-                }
-                if (str.length > 1 && !str[1].isBlank()) {
-                    Director.TeachersWomanSurnames.add(str[1]);
-                }
                 if (str.length > 2 && !str[2].isBlank()) {
-                    Director.ManNames.add(str[2]);
+                    builder.getNames(LibraryClientType.MAN).add(str[2]);
                 }
                 if (str.length > 3 && !str[3].isBlank()) {
-                    Director.WomanNames.add(str[3]);
+                    builder.getNames(LibraryClientType.WOMAN).add(str[3]);
                 }
-                if (str.length > 4 && !str[4].isBlank()) {
-                    Director.ManSurnames.add(str[4]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readCsvTeachers(String FileName, TeacherBuilder builder) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] str = line.split(";");
+                if (str.length > 0 && !str[0].isBlank()) {
+                    builder.getTeachersManSurnames().add(str[0]);
                 }
-                if (str.length > 5 && !str[5].isBlank()) {
-                    Director.WomanSurnames.add(str[5]);
+                if (str.length > 1 && !str[1].isBlank()) {
+                    builder.getTeachersWomanSurnames().add(str[1]);
                 }
                 if (str.length > 6 && !str[6].isBlank()) {
-                    Director.TeachersManMiddleNames.add(str[6]);
+                    builder.getTeachersManMiddleNames().add(str[6]);
                 }
                 if (str.length > 7 && !str[7].isBlank()) {
-                    Director.TeachersWomanMiddleNames.add(str[7]);
+                    builder.getTeachersWomanMiddleNames().add(str[7]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readCsvStudents(String FileName, StudentBuilder builder) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] str = line.split(";");
+                if (str.length > 4 && !str[4].isBlank()) {
+                    builder.getManSurnames().add(str[4]);
+                }
+                if (str.length > 5 && !str[5].isBlank()) {
+                    builder.getWomanSurnames().add(str[5]);
                 }
             }
         } catch (IOException e) {

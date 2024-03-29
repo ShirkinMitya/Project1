@@ -2,11 +2,14 @@ package laba1;
 
 import books.AbstractBookFactory;
 import books.Book;
-import books.EnglishBookFactory;
-import books.RussianBookFactory;
+import books.EnglishEducationalBookFactory;
+import books.EnglishFictionBookFactory;
+import books.RussianEducationalBookFactory;
+import books.RussianFictionBookFactory;
 import customers.Builder;
 import customers.Director;
 import customers.LibraryClient;
+import customers.LibraryClientType;
 import customers.StudentBuilder;
 import customers.TeacherBuilder;
 import java.util.ArrayList;
@@ -17,9 +20,9 @@ import javax.swing.tree.MutableTreeNode;
 
 public class Service {
 
-    public static List<Book> books = new ArrayList<>();
-    public static List<LibraryClient> students = new ArrayList<>();
-    public static List<LibraryClient> teachers = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
+    private List<LibraryClient> students = new ArrayList<>();
+    private List<LibraryClient> teachers = new ArrayList<>();
 
     public void createData() {
         Random random = new Random();
@@ -29,33 +32,47 @@ public class Service {
         Director studentdirector = new Director(studentbuilder);
         Director teacherdirector = new Director(teacherbuilder);
 
-        factory = new RussianBookFactory();
+        factory = new RussianEducationalBookFactory();
         for (int i = 0; i < 20; i++) {
-            books.add(factory.createEducationalBook());
+            books.add(factory.createBook());
         }
-         for (int i = 0; i < 35; i++) {
-            books.add(factory.createFictionBook());
+        factory = new RussianFictionBookFactory();
+        for (int i = 0; i < 35; i++) {
+            books.add(factory.createBook());
         }
-        factory = new EnglishBookFactory();
+        factory = new EnglishFictionBookFactory();
         for (int i = 0; i < 15; i++) {
-            books.add(factory.createFictionBook());
+            books.add(factory.createBook());
         }
+        factory = new EnglishEducationalBookFactory();
         for (int i = 0; i < 30; i++) {
-            books.add(factory.createEducationalBook());
+            books.add(factory.createBook());
         }
 
         for (int i = 0; i < 10; i++) {
-            LibraryClient libraryClient = random.nextInt(2) == 0 ? studentdirector.createManLibraryClient()
-                    : studentdirector.createWomanLibraryClient();
+            LibraryClient libraryClient;
+            if (random.nextInt(2) == 0) {
+                libraryClient = studentdirector.createLibraryClient(LibraryClientType.MAN);
+            } else {
+                libraryClient = studentdirector.createLibraryClient(LibraryClientType.WOMAN);
+            }
             students.add(libraryClient);
         }
 
         for (int i = 0; i < 10; i++) {
-            LibraryClient libraryClient = random.nextInt(2) == 0 ? teacherdirector.createManLibraryClient()
-                    : teacherdirector.createWomanLibraryClient();
+            LibraryClient libraryClient;
+            if (random.nextInt(2) == 0) {
+                libraryClient = teacherdirector.createLibraryClient(LibraryClientType.MAN);
+            } else {
+                libraryClient = teacherdirector.createLibraryClient(LibraryClientType.WOMAN);
+            }
             teachers.add(libraryClient);
         }
+        
         takeBook();
+        factory.deliteData();
+        studentdirector.deleteData();
+        teacherdirector.deleteData();
     }
 
     public void takeBook() {
@@ -77,12 +94,6 @@ public class Service {
                 copyOfBooks.remove(numberOfBook);
             }
         }
-    }
-
-    public void delete() {
-        books = new ArrayList<>();
-        teachers = new ArrayList<>();
-        students = new ArrayList<>();
     }
 
     public DefaultMutableTreeNode addInfotoGUI() {

@@ -2,13 +2,12 @@ package books;
 
 public class RussianEducational extends Book {
 
-    private String subType;
+    private final String subType;
 
     public RussianEducational(String name, String subType) {
         super(name);
         this.subType = subType;
         this.setType(BookType.RUSSIAN_EDUCATIONAL);
-
     }
 
     @Override
