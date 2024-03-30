@@ -10,8 +10,8 @@ public class EnglishFictionBookFactory implements AbstractBookFactory {
     private List<String> namesForFiction = new ArrayList<>();
     private List<String> authorToFiction = new ArrayList<>();
     private List<String> year = new ArrayList<>();
-    private final CSVreader csvreader = new CSVreader();
-    private final String csvFileEnglishFiction = "/Users/shirkinmity/Desktop/АнглийскаяХудожественная.csv";
+    private CSVreader csvreader = new CSVreader();
+    private String csvFileEnglishFiction = "/Users/shirkinmity/Desktop/АнглийскаяХудожественная.csv";
 
     public EnglishFictionBookFactory() {
         readData();

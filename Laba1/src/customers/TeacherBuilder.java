@@ -12,8 +12,8 @@ public class TeacherBuilder extends Builder {
     private List<String> TeachersWomanSurnames = new ArrayList<>();
     private List<String> TeachersManMiddleNames = new ArrayList<>();
     private List<String> TeachersWomanMiddleNames = new ArrayList<>();
-    private final String csvFileFIO = "/Users/shirkinmity/Desktop/Фио.csv";
-    private final CSVreader csvreader = new CSVreader();
+    private String csvFileFIO = "/Users/shirkinmity/Desktop/Фио.csv";
+    private CSVreader csvreader = new CSVreader();
 
     @Override
     public Builder createName(LibraryClientType type) {

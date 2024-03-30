@@ -10,8 +10,8 @@ public class StudentBuilder extends Builder {
     private String fullName;
     private List<String> ManSurnames = new ArrayList<>();
     private List<String> WomanSurnames = new ArrayList<>();
-    private final String csvFileFIO = "/Users/shirkinmity/Desktop/Фио.csv";
-    private final CSVreader csvreader = new CSVreader();
+    private String csvFileFIO = "/Users/shirkinmity/Desktop/Фио.csv";
+    private CSVreader csvreader = new CSVreader();
 
     @Override
     public Builder createName(LibraryClientType type) {

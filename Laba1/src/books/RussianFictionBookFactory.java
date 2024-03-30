@@ -9,8 +9,8 @@ public class RussianFictionBookFactory implements AbstractBookFactory {
 
     private List<String> namesForFiction = new ArrayList<>();
     private List<String> author = new ArrayList<>();
-    private final CSVreader csvreader = new CSVreader();
-    private final String csvFileRussianFiction = "/Users/shirkinmity/Desktop/РусскаяХодожественная.csv";
+    private CSVreader csvreader = new CSVreader();
+    private String csvFileRussianFiction = "/Users/shirkinmity/Desktop/РусскаяХодожественная.csv";
 
     public RussianFictionBookFactory() {
         readData();

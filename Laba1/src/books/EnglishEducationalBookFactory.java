@@ -11,8 +11,8 @@ public class EnglishEducationalBookFactory implements AbstractBookFactory{
     private List<String> authorForEducational = new ArrayList<>();
     private List<String> levels = new ArrayList<>();
     private List<String> univercities = new ArrayList<>();
-    private final CSVreader csvreader = new CSVreader();
-    private final String csvFileEnglisgEducational = "/Users/shirkinmity/Desktop/АнглийскаяНаучная.csv";
+    private CSVreader csvreader = new CSVreader();
+    private String csvFileEnglisgEducational = "/Users/shirkinmity/Desktop/АнглийскаяНаучная.csv";
 
     public EnglishEducationalBookFactory() {
         readData();
