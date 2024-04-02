@@ -63,14 +63,6 @@ public class TeacherBuilder extends Builder {
         csvreader.readCsvTeachers(csvFileFIO, this);
     }
 
-    @Override
-    public void deliteData() {
-        this.TeachersManMiddleNames.clear();
-        this.TeachersWomanMiddleNames.clear();
-        this.TeachersManSurnames.clear();
-        this.TeachersWomanSurnames.clear();
-    }
-
     public String getFullName() {
         return fullName;
     }

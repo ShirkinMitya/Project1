@@ -28,12 +28,6 @@ public class RussianFictionBookFactory implements AbstractBookFactory {
         csvreader.readCsvRussianFiction(csvFileRussianFiction, this);
     }
 
-    @Override
-    public void deliteData() {
-        this.namesForFiction.clear();
-        this.author.clear();
-    }
-
     public List<String> getNamesForFiction() {
         return namesForFiction;
     }

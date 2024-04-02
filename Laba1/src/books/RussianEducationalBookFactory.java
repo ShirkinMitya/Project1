@@ -29,12 +29,6 @@ public class RussianEducationalBookFactory implements AbstractBookFactory {
         csvreader.readCsvRussianEducational(csvFileRussianEducational, this);
     }
 
-    @Override
-    public void deliteData() {
-        this.namesForEducational.clear();
-        this.subType.clear();
-    }
-
     public List<String> getNamesForEducational() {
         return namesForEducational;
     }
@@ -50,5 +44,5 @@ public class RussianEducationalBookFactory implements AbstractBookFactory {
     public void setSubType(List<String> subType) {
         this.subType = subType;
     }
-    
+
 }

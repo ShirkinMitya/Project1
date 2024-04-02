@@ -16,7 +16,4 @@ public class Director {
                 .createSecondName(type)
                 .createLibraryClient();
     }
-    public void deleteData(){
-        builder.deliteData();
-    }
 }

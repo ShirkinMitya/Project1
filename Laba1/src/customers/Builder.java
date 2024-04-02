@@ -18,8 +18,6 @@ public abstract class Builder {
 
     abstract void readData();
 
-    abstract void deliteData();
-
     public List<String> getNames(LibraryClientType types) {
         if (types == LibraryClientType.MAN) {
             return ManNames;

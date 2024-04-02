@@ -32,13 +32,6 @@ public class EnglishFictionBookFactory implements AbstractBookFactory {
         csvreader.readCsvEnglishFuntion(csvFileEnglishFiction, this);
     }
 
-    @Override
-    public void deliteData() {
-        this.namesForFiction.clear();
-        this.authorToFiction.clear();
-        this.year.clear();
-    }
-
     public List<String> getNamesForFiction() {
         return namesForFiction;
     }

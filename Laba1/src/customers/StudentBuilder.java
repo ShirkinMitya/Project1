@@ -52,12 +52,6 @@ public class StudentBuilder extends Builder {
         csvreader.readCsvStudents(csvFileFIO, this);
     }
 
-    @Override
-    public void deliteData() {
-        this.ManSurnames.clear();
-        this.WomanSurnames.clear();
-    }
-
     public String getFullName() {
         return fullName;
     }

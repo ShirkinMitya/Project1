@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import laba1.CSVreader;
 
-public class EnglishEducationalBookFactory implements AbstractBookFactory{
+public class EnglishEducationalBookFactory implements AbstractBookFactory {
 
     private List<String> namesForEducational = new ArrayList<>();
     private List<String> authorForEducational = new ArrayList<>();
@@ -32,15 +32,7 @@ public class EnglishEducationalBookFactory implements AbstractBookFactory{
     }
 
     private void readData() {
-        csvreader.readCsvEnglishEducational(csvFileEnglisgEducational, this);            
-    }
-
-    @Override
-    public void deliteData() {
-        this.namesForEducational.clear();
-        this.authorForEducational.clear();
-        this.levels.clear();
-        this.univercities.clear();
+        csvreader.readCsvEnglishEducational(csvFileEnglisgEducational, this);
     }
 
     public List<String> getNamesForEducational() {
@@ -74,6 +66,5 @@ public class EnglishEducationalBookFactory implements AbstractBookFactory{
     public void setUnivercities(List<String> univercities) {
         this.univercities = univercities;
     }
-    
 
 }
