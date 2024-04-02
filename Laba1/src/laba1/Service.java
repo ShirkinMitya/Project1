@@ -24,82 +24,65 @@ public class Service {
     private List<LibraryClient> students = new ArrayList<>();
     private List<LibraryClient> teachers = new ArrayList<>();
 
-    public void createData() {
-        Random random = new Random();
-        AbstractBookFactory factory;
-        Builder studentbuilder = new StudentBuilder();
-        Builder teacherbuilder = new TeacherBuilder();
-        Director studentdirector = new Director(studentbuilder);
-        Director teacherdirector = new Director(teacherbuilder);
-
-        factory = new RussianEducationalBookFactory();
-        for (int i = 0; i < 20; i++) {
-            books.add(factory.createBook());
-        }
-        factory = new RussianFictionBookFactory();
-        for (int i = 0; i < 35; i++) {
-            books.add(factory.createBook());
-        }
-        factory = new EnglishFictionBookFactory();
-        for (int i = 0; i < 15; i++) {
-            books.add(factory.createBook());
-        }
-        factory = new EnglishEducationalBookFactory();
-        for (int i = 0; i < 30; i++) {
-            books.add(factory.createBook());
-        }
-
-        for (int i = 0; i < 10; i++) {
-            LibraryClient libraryClient;
-            if (random.nextInt(2) == 0) {
-                libraryClient = studentdirector.createLibraryClient(LibraryClientType.MAN);
-            } else {
-                libraryClient = studentdirector.createLibraryClient(LibraryClientType.WOMAN);
-            }
-            students.add(libraryClient);
-        }
-
-        for (int i = 0; i < 10; i++) {
-            LibraryClient libraryClient;
-            if (random.nextInt(2) == 0) {
-                libraryClient = teacherdirector.createLibraryClient(LibraryClientType.MAN);
-            } else {
-                libraryClient = teacherdirector.createLibraryClient(LibraryClientType.WOMAN);
-            }
-            teachers.add(libraryClient);
-        }
-        
-        takeBook();
-        factory.deliteData();
-        studentdirector.deleteData();
-        teacherdirector.deleteData();
+    public void createBook() {
+        createConcretBooks(new RussianEducationalBookFactory(), 20);
+        createConcretBooks(new RussianFictionBookFactory(), 35);
+        createConcretBooks(new EnglishEducationalBookFactory(), 30);
+        createConcretBooks(new EnglishFictionBookFactory(), 15);
     }
 
-    public void takeBook() {
-        for (LibraryClient student : students) {
-            List<Book> copyOfBooks = new ArrayList<>(books);
-            int quantityOfBooks = (int) Math.round(Math.random() * 7 + 3);
-            for (int i = 1; i <= quantityOfBooks; i++) {
-                int numberOfBook = (int) Math.round(Math.random() * (copyOfBooks.size() - 1));
-                student.getBooks().add(books.get(numberOfBook));
-                copyOfBooks.remove(numberOfBook);
-            }
+    public void createConcretBooks(AbstractBookFactory factory, int amount) {
+        for (int i = 0; i < amount; i++) {
+            books.add(factory.createBook());
         }
-        for (LibraryClient teacher : teachers) {
-            List<Book> copyOfBooks = new ArrayList<>(books);
-            int quantityOfBooks = (int) Math.round(Math.random() * 7 + 3);
-            for (int i = 1; i <= quantityOfBooks; i++) {
-                int numberOfBook = (int) Math.round(Math.random() * (copyOfBooks.size() - 1));
-                teacher.getBooks().add(books.get(numberOfBook));
-                copyOfBooks.remove(numberOfBook);
+    }
+
+    public void createPeople() {
+        students = createConcretPeople(new StudentBuilder(), 10);
+        teachers = createConcretPeople(new TeacherBuilder(), 10);
+        takeBook(students);
+        takeBook(teachers);
+    }
+
+    public List<LibraryClient> createConcretPeople(Builder builder, int amount) {
+        Random random = new Random();
+        Director director = new Director(builder);
+        List<LibraryClient> clients = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            LibraryClient libraryClient;
+            if (random.nextInt(2) == 0) {
+                libraryClient = director.createLibraryClient(LibraryClientType.MAN);
+            } else {
+                libraryClient = director.createLibraryClient(LibraryClientType.WOMAN);
+            }
+            clients.add(libraryClient);
+        }
+        return clients;
+    }
+
+    public int[] generateRandomNumbers() {
+        Random random = new Random();
+        int quantityOfBooks = (int) Math.round(Math.random() * 7 + 3);
+        int[] randomNumbers = new int[quantityOfBooks];
+        for (int i = 0; i < quantityOfBooks; i++) {
+            randomNumbers[i] = random.nextInt(books.size());
+        }
+        return randomNumbers;
+    }
+
+    public void takeBook(List<LibraryClient> clients) {
+        for (LibraryClient client : clients) {
+            int[] indexes = generateRandomNumbers();
+            for (int i = 0; i < indexes.length; i++) {
+                client.getBooks().add(books.get(indexes[i]));
             }
         }
     }
 
     public DefaultMutableTreeNode addInfotoGUI() {
         DefaultMutableTreeNode mainNode = new DefaultMutableTreeNode("Клиенты");
-        mainNode.add(getSudentNodes());
-        mainNode.add(getTeachersNodes());
+        mainNode.add(getClientsNodes("Студенты", students));
+        mainNode.add(getClientsNodes("Преподователи", teachers));
         return mainNode;
     }
 
@@ -114,19 +97,11 @@ public class Service {
         return node;
     }
 
-    public MutableTreeNode getSudentNodes() {
-        DefaultMutableTreeNode studentnodes = new DefaultMutableTreeNode("Студенты");
-        for (LibraryClient libraryClient : students) {
-            studentnodes.add(getNode(libraryClient));
+    public MutableTreeNode getClientsNodes(String nameOfNode, List<LibraryClient> clients) {
+        DefaultMutableTreeNode clientnodes = new DefaultMutableTreeNode(nameOfNode);
+        for (LibraryClient libraryClient : clients) {
+            clientnodes.add(getNode(libraryClient));
         }
-        return studentnodes;
-    }
-
-    public MutableTreeNode getTeachersNodes() {
-        DefaultMutableTreeNode teachernodes = new DefaultMutableTreeNode("Преподаватели");
-        for (LibraryClient libraryClient : teachers) {
-            teachernodes.add(getNode(libraryClient));
-        }
-        return teachernodes;
+        return clientnodes;
     }
 }
