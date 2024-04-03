@@ -78,6 +78,12 @@ public class Service {
             }
         }
     }
+    
+    public void deliteData(){
+        books.clear();
+        students.clear();
+        teachers.clear();
+    }
 
     public DefaultMutableTreeNode addInfotoGUI() {
         DefaultMutableTreeNode mainNode = new DefaultMutableTreeNode("Клиенты");

@@ -72,6 +72,7 @@ public class GUI extends javax.swing.JFrame {
         service.createBook();
         service.createPeople();
         TreeStructure.setModel(new DefaultTreeModel(service.addInfotoGUI()));
+        service.deliteData();
     }//GEN-LAST:event_ButtonStartActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
